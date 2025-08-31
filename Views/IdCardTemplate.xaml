@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IdentityCardGenerator.Views.IdCardTemplate"
+             Title="ID Card Template">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="ID Card Template"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   Margin="0,10" />
+            
+            <Frame x:Name="IdCardFrame"
+                   BorderColor="{Binding BorderColor, Source={x:Reference IdCardTemplatePage}}"
+                   CornerRadius="10"
+                   Padding="20"
+                   HasShadow="True"
+                   WidthRequest="400"
+                   HeightRequest="250"
+                   HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="10">
+                    <!-- Header -->
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Image Source="dotnet_bot.png"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Aspect="AspectFit" />
+                        <Label Text="{Binding CompanyName, Source={x:Reference IdCardTemplatePage}}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               Margin="10,0" />
+                    </HorizontalStackLayout>
+                    
+                    <!-- Divider -->
+                    <BoxView Color="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" HeightRequest="1" />
+                    
+                    <!-- Content -->
+                    <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                        <!-- Photo -->
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
+                               BorderColor="{Binding BorderColor, Source={x:Reference IdCardTemplatePage}}"
+                               CornerRadius="5"
+                               Padding="2"
+                               IsVisible="{Binding ShowPhoto, Source={x:Reference IdCardTemplatePage}}">
+                            <Image x:Name="PhotoImage"
+                                   Source="dotnet_bot.png"
+                                   WidthRequest="120"
+                                   HeightRequest="150"
+                                   Aspect="AspectFill" />
+                        </Frame>
+                        
+                        <!-- Name -->
+                        <Label Grid.Row="0" Grid.Column="1"
+                               Text="Name:"
+                               FontAttributes="Bold"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        <Label Grid.Row="0" Grid.Column="2"
+                               x:Name="NameLabel"
+                               Text="John Doe"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        
+                        <!-- ID Number -->
+                        <Label Grid.Row="1" Grid.Column="1"
+                               Text="ID Number:"
+                               FontAttributes="Bold"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        <Label Grid.Row="1" Grid.Column="2"
+                               x:Name="IdNumberLabel"
+                               Text="123456789"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        
+                        <!-- Department -->
+                        <Label Grid.Row="2" Grid.Column="1"
+                               Text="Department:"
+                               FontAttributes="Bold"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        <Label Grid.Row="2" Grid.Column="2"
+                               Text="Engineering"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        
+                        <!-- Barcode -->
+                        <VerticalStackLayout Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                                             HorizontalOptions="Center"
+                                             IsVisible="{Binding ShowBarcode, Source={x:Reference IdCardTemplatePage}}">
+                            <Label Text="Barcode:"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                            <Image x:Name="BarcodeImage"
+                                   Source="dotnet_bot.png"
+                                   WidthRequest="200"
+                                   HeightRequest="50"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    
+                    <!-- Signature Line -->
+                    <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,10,0,0"
+                                 IsVisible="{Binding ShowSignatureLine, Source={x:Reference IdCardTemplatePage}}">
+                        <Label Text="Signature:"
+                               VerticalOptions="End"
+                               FontAttributes="Bold"
+                               TextColor="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}" />
+                        <BoxView Color="{Binding TextColor, Source={x:Reference IdCardTemplatePage}}"
+                                 HeightRequest="1"
+                                 WidthRequest="200"
+                                 VerticalOptions="Center" />
+                    </StackLayout>
+                </VerticalStackLayout>
+            </Frame>
+            
+            <Button Text="Save ID Card"
+                    Clicked="OnSaveIdCardClicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    Margin="0,20" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
