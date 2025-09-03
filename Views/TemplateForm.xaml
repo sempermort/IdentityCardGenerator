@@ -5,132 +5,114 @@
              Title="ID Card Template Form">
 
     <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="15">
-                <Label Text="ID Card Template Customization" 
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="ID Card Template Customization" 
                    FontSize="24" 
                    HorizontalOptions="Center" 
                    Margin="0,10" />
 
-                <!-- Company Name -->
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
-                    <VerticalStackLayout>
-                        <Label Text="Company Name" FontAttributes="Bold" />
-                        <Entry x:Name="CompanyNameEntry" 
+            <!-- Company Name -->
+            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
+                <VerticalStackLayout>
+                    <Label Text="Company Name" FontAttributes="Bold" />
+                    <Entry x:Name="CompanyNameEntry" 
                            Placeholder="Enter company name"
                            Text="{Binding CompanyName}" />
-                    </VerticalStackLayout>
-                </Border>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Header Text -->
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
-                    <VerticalStackLayout>
-                        <Label Text="Header Text" FontAttributes="Bold" />
-                        <Entry x:Name="HeaderTextEntry" 
+            <!-- Header Text -->
+            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
+                <VerticalStackLayout>
+                    <Label Text="Header Text" FontAttributes="Bold" />
+                    <Entry x:Name="HeaderTextEntry" 
                            Placeholder="Enter header text"
                            Text="{Binding HeaderText}" />
-                    </VerticalStackLayout>
-                </Border>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Footer Text -->
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
-                    <VerticalStackLayout>
-                        <Label Text="Footer Text" FontAttributes="Bold" />
-                        <Entry x:Name="FooterTextEntry" 
+            <!-- Footer Text -->
+            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
+                <VerticalStackLayout>
+                    <Label Text="Footer Text" FontAttributes="Bold" />
+                    <Entry x:Name="FooterTextEntry" 
                            Placeholder="Enter footer text"
                            Text="{Binding FooterText}" />
-                    </VerticalStackLayout>
-                </Border>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Colors -->
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
-                    <VerticalStackLayout>
-                        <Label Text="Colors" FontAttributes="Bold" />
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="10">
-                            <Label Grid.Row="0" Grid.Column="0" Text="Background Color:" VerticalOptions="Center" />
-                            <Entry Grid.Row="0" Grid.Column="1" 
+            <!-- Colors -->
+            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
+                <VerticalStackLayout>
+                    <Label Text="Colors" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Background Color:" VerticalOptions="Center" />
+                        <Entry Grid.Row="0" Grid.Column="1" 
                                Placeholder="Enter hex color (e.g. #FFFFFF)"
                                Text="{Binding BackgroundColor}" />
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="Text Color:" VerticalOptions="Center" />
-                            <Entry Grid.Row="1" Grid.Column="1" 
+                        <Label Grid.Row="1" Grid.Column="0" Text="Text Color:" VerticalOptions="Center" />
+                        <Entry Grid.Row="1" Grid.Column="1" 
                                Placeholder="Enter hex color (e.g. #000000)"
                                Text="{Binding TextColor}" />
 
-                            <Label Grid.Row="2" Grid.Column="0" Text="Border Color:" VerticalOptions="Center" />
-                            <Entry Grid.Row="2" Grid.Column="1" 
+                        <Label Grid.Row="2" Grid.Column="0" Text="Border Color:" VerticalOptions="Center" />
+                        <Entry Grid.Row="2" Grid.Column="1" 
                                Placeholder="Enter hex color (e.g. #000000)"
                                Text="{Binding BorderColor}" />
-                        </Grid>
-                    </VerticalStackLayout>
-                </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Options -->
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
-                    <VerticalStackLayout>
-                        <Label Text="Options" FontAttributes="Bold" Margin="0,0,0,10" />
+            <!-- Options -->
+            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="0,5" StrokeShape="RoundRectangle 5">
+                <VerticalStackLayout>
+                    <Label Text="Options" FontAttributes="Bold" Margin="0,0,0,10" />
 
-                        <HorizontalStackLayout Spacing="10">
-                            <CheckBox IsChecked="{Binding ShowBarcode}" />
-                            <Label Text="Show Barcode" VerticalOptions="Center" />
-                        </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding ShowBarcode}" />
+                        <Label Text="Show Barcode" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
 
-                        <HorizontalStackLayout Spacing="10">
-                            <CheckBox IsChecked="{Binding ShowPhoto}" />
-                            <Label Text="Show Photo" VerticalOptions="Center" />
-                        </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding ShowPhoto}" />
+                        <Label Text="Show Photo" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
 
-                        <HorizontalStackLayout Spacing="10">
-                            <CheckBox IsChecked="{Binding ShowSignatureLine}" />
-                            <Label Text="Show Signature Line" VerticalOptions="Center" />
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Border>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding ShowSignatureLine}" />
+                        <Label Text="Show Signature Line" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Action Buttons -->
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20">
-                    <Button Text="Save Template" 
+            <!-- Action Buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20">
+                <Button Text="Save Template" 
                         Command="{Binding SaveTemplateCommand}"
                         WidthRequest="150" />
-                    <Button Text="Reset to Default" 
+                <Button Text="Reset to Default" 
                         Command="{Binding ResetToDefaultCommand}"
                         WidthRequest="150" />
-                </HorizontalStackLayout>
+            </HorizontalStackLayout>
 
-                <!-- Preview -->
-                <Label Text="Preview" 
+            <!-- Preview -->
+            <Label Text="Preview" 
                    FontSize="20" 
                    FontAttributes="Bold" 
                    HorizontalOptions="Center" 
                    Margin="0,20,0,10" />
 
-                <Border Stroke="{Binding BorderColor}" 
+            <Border Stroke="{Binding BorderColor}" 
                     Background="{Binding BackgroundColor}"
-                    StrokeThickness="2"
-                    Padding="20" 
+                    StrokeThickness="2" 
                     StrokeShape="RoundRectangle 10"
                     WidthRequest="400"
-                    HeightRequest="400"
-                    HorizontalOptions="Center">
-                    <StackLayout Spacing="10">
-                        <!-- Header -->
-                        <Label Text="{Binding HeaderText}" 
-                           TextColor="{Binding TextColor}"
-                           FontSize="18" 
-                           FontAttributes="Bold" 
-                           HorizontalOptions="Center" />
+                    HeightRequest="600">
+                <StackLayout Spacing="10">
 
-                        <!-- Company Name -->
-                        <Label Text="{Binding CompanyName}" 
-                           TextColor="{Binding TextColor}"
-                           FontSize="20" 
-                           FontAttributes="Bold" 
-                           HorizontalOptions="Center" />
-
-                        <!-- Divider -->
-                        <BoxView Color="{Binding TextColor}"  HeightRequest="1" />
-                   
                     <Grid >
-             
+
 
                         <Grid>
                             <Border Stroke="{Binding BorderColor}" 
@@ -142,29 +124,29 @@
                          HeightRequest="450"
                          HorizontalOptions="Start" 
                                     BackgroundColor="#1b4610" 
-                                    Rotation="-40" TranslationX="180"
-                                    TranslationY="-280"/>
+                                    Rotation="-55" TranslationX="80"
+                                    TranslationY="-276"/>
                             <Border Stroke="{Binding BorderColor}" 
                               Background="{Binding BackgroundColor}"
                               StrokeThickness="2"
                               Padding="20" 
                               StrokeShape="RoundRectangle 10"
-                              WidthRequest="250"
-                              HeightRequest="400"
+                              WidthRequest="240"
+                              HeightRequest="390"
                               HorizontalOptions="Start" 
                                     BackgroundColor="#589935"
-                                    Rotation="-40" TranslationX="-90" TranslationY="-220"/>
-                        <!-- Content -->
-     
+                                    Rotation="-63" TranslationX="-90" TranslationY="-179"/>
+                            <!-- Content -->
+
                         </Grid>
                         <Grid  >
                             <!-- Hexagon Background -->
                             <GraphicsView x:Name="graphics"
                                           WidthRequest="220" 
                                           HeightRequest="220"
-                                          TranslationY="-150"
+                                          TranslationY="-100"
                                           Background="WhiteSmoke"
-                                /> 
+                                />
                             <!-- Content Over It -->
                             <Image Source="dotnet_bot.png" 
                                    HorizontalOptions="Center"
@@ -172,78 +154,82 @@
                                    WidthRequest="220" 
                                    HeightRequest="220"
                                    Aspect="AspectFit"  
-                                   TranslationY="-150"/>
+                                   TranslationY="-100"/>
                         </Grid>
 
                     </Grid>
-                    <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="10">
-                            <!-- Photo Placeholder -->
- 
+                    <StackLayout HorizontalOptions="Center">
+                    <Grid ColumnDefinitions="Auto,2*" 
+      RowDefinitions="Auto,Auto,Auto,Auto"  TranslationY="-150"
+      ColumnSpacing="10" 
+      RowSpacing="10">
 
-                            <!-- Name -->
-                            <Label Grid.Row="0" Grid.Column="1" 
-                               Text="Name:" 
-                               TextColor="{Binding TextColor}"
-                               FontAttributes="Bold" />
-                            <Label Grid.Row="0" Grid.Column="2" 
-                               Text="John Doe" 
-                               TextColor="{Binding TextColor}"/>
+                        <!-- Name -->
+                        <Label Grid.Row="0" Grid.Column="0" 
+           Text="Name:" 
+           TextColor="{Binding TextColor}" 
+           FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="1" 
+           Text="John Doe" 
+           TextColor="{Binding TextColor}" />
 
-                            <!-- ID Number -->
-                            <Label Grid.Row="1" Grid.Column="1" 
-                               Text="ID Number:" 
-                               TextColor="{Binding TextColor}"
-                               FontAttributes="Bold" />
-                            <Label Grid.Row="1" Grid.Column="2" 
-                               Text="123456789" 
-                               TextColor="{Binding TextColor}"/>
+                        <!-- ID Number -->
+                        <Label Grid.Row="1" Grid.Column="0" 
+           Text="ID Number:" 
+           TextColor="{Binding TextColor}" 
+           FontAttributes="Bold" />
+                        <Label Grid.Row="1" Grid.Column="1" 
+           Text="123456789" 
+           TextColor="{Binding TextColor}" />
 
-                            <!-- Department -->
-                            <Label Grid.Row="2" Grid.Column="1" 
-                               Text="Department:" 
-                               TextColor="{Binding TextColor}"
-                               FontAttributes="Bold" />
-                            <Label Grid.Row="2" Grid.Column="2" 
-                               Text="Engineering" 
-                               TextColor="{Binding TextColor}"/>
+                        <!-- Department -->
+                        <Label Grid.Row="2" Grid.Column="0" 
+           Text="Department:" 
+           TextColor="{Binding TextColor}" 
+           FontAttributes="Bold" />
+                        <Label Grid.Row="2" Grid.Column="1" 
+           Text="Engineering" 
+           TextColor="{Binding TextColor}" />
 
-                            <!-- Barcode -->
-                            <AbsoluteLayout Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
-                                             HorizontalOptions="Center"
-                                             IsVisible="{Binding ShowBarcode}">
+                        <!-- Barcode Section -->
+                        <AbsoluteLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding ShowBarcode}">
+                            <StackLayout HorizontalOptions="Center">
                                 <Label Text="Barcode:" 
-                                   TextColor="{Binding TextColor}"
-                                   FontAttributes="Bold" 
-                                   HorizontalOptions="Center" />
+                   TextColor="{Binding TextColor}" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
                                 <Image Source="dotnet_bot.png" 
-                                   WidthRequest="200" 
-                                   HeightRequest="50" 
-                                   Aspect="AspectFit" 
-                                   HorizontalOptions="Center" />
-                            </AbsoluteLayout>
-                        </Grid>
-                    
+                   WidthRequest="200" 
+                   HeightRequest="50" 
+                   Aspect="AspectFit" 
+                   HorizontalOptions="Center" />
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </Grid>
+                    </StackLayout>
                     <!-- Signature Line -->
-                        <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,10,0,0"
+                    <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,10,0,0"
                                  IsVisible="{Binding ShowSignatureLine}">
-                            <Label Text="Signature:" 
+                        <Label Text="Signature:" 
                                TextColor="{Binding TextColor}"
                                VerticalOptions="End" 
                                FontAttributes="Bold" />
-                            <BoxView Color="{Binding TextColor}" 
+                        <BoxView Color="{Binding TextColor}" 
                                  HeightRequest="1" 
                                  WidthRequest="200" 
                                  VerticalOptions="Center" />
-                        </StackLayout>
+                    </StackLayout>
 
-                        <!-- Footer -->
-                        <Label Text="{Binding FooterText}" 
+                    <!-- Footer -->
+                    <Label Text="{Binding FooterText}" 
                            TextColor="{Binding TextColor}"
                            FontSize="12" 
                            HorizontalOptions="Center" 
                            HorizontalTextAlignment="Center" />
-                    </StackLayout>
-                </Border>
-            </VerticalStackLayout>
-        </ScrollView>
+                </StackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
