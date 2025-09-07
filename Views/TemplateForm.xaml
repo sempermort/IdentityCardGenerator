@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:IdentityCardGenerator"
              x:Class="IdentityCardGenerator.Views.TemplateForm"
              Title="ID Card Template Form">
 
@@ -107,35 +108,34 @@
                     Background="{Binding BackgroundColor}"
                     StrokeThickness="2" 
                     StrokeShape="RoundRectangle 10"
-                    WidthRequest="400"
-                    HeightRequest="600">
+                    WidthRequest="350"
+                    HeightRequest="500">
                 <StackLayout Spacing="10">
-
                     <Grid >
-
-
                         <Grid>
                             <Border Stroke="{Binding BorderColor}" 
-                         Background="{Binding BackgroundColor}"
-                         StrokeThickness="2"
-                         Padding="20" 
-                         StrokeShape="RoundRectangle 10"
-                         WidthRequest="480"
-                         HeightRequest="450"
-                         HorizontalOptions="Start" 
+                                    Background="{Binding BackgroundColor}"
+                                    StrokeThickness="2"
+                                    Padding="20" 
+                                    StrokeShape="RoundRectangle 10"
+                                    WidthRequest="480"
+                                    HeightRequest="450"
+                                    HorizontalOptions="Start" 
                                     BackgroundColor="#1b4610" 
                                     Rotation="-55" TranslationX="80"
                                     TranslationY="-276"/>
                             <Border Stroke="{Binding BorderColor}" 
-                              Background="{Binding BackgroundColor}"
-                              StrokeThickness="2"
-                              Padding="20" 
-                              StrokeShape="RoundRectangle 10"
-                              WidthRequest="240"
-                              HeightRequest="390"
-                              HorizontalOptions="Start" 
+                                    Background="{Binding BackgroundColor}"
+                                    StrokeThickness="2"
+                                    Padding="20" 
+                                    StrokeShape="RoundRectangle 10"
+                                    WidthRequest="240"
+                                    HeightRequest="390"
+                                    HorizontalOptions="Start" 
                                     BackgroundColor="#589935"
-                                    Rotation="-63" TranslationX="-90" TranslationY="-179"/>
+                                    Rotation="-63" 
+                                    TranslationX="-90" 
+                                    TranslationY="-179"/>
                             <!-- Content -->
 
                         </Grid>
@@ -148,7 +148,7 @@
                                           Background="WhiteSmoke"
                                 />
                             <!-- Content Over It -->
-                            <Image Source="dotnet_bot.png" 
+                            <Image Source="{Binding PhotoPath}" 
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"
                                    WidthRequest="220" 
@@ -156,79 +156,104 @@
                                    Aspect="AspectFit"  
                                    TranslationY="-100"/>
                         </Grid>
-
                     </Grid>
-                    <StackLayout HorizontalOptions="Center">
-                    <Grid ColumnDefinitions="Auto,2*" 
-      RowDefinitions="Auto,Auto,Auto,Auto"  TranslationY="-150"
-      ColumnSpacing="10" 
-      RowSpacing="10">
+                    <VerticalStackLayout 
+                        HorizontalOptions="Center"
+                        TranslationY="-230">
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="{Binding FirstName}" 
+                                   FontSize="30" 
+                                   FontAttributes="Bold" 
+                                   HorizontalOptions="Center" 
+                                   Margin="0,20,0,10" 
+                                   TextColor="{Binding TextColor}" />
+                            <Label Text="{Binding LastName}" 
+                                   FontSize="30" 
+                                   FontAttributes="Bold" 
+                                   HorizontalOptions="Center" 
+                                   Margin="0,20,0,10" 
+                                   TextColor="{Binding TextColor}" />
+                        </HorizontalStackLayout>
 
-                        <!-- Name -->
-                        <Label Grid.Row="0" Grid.Column="0" 
-           Text="Name:" 
-           TextColor="{Binding TextColor}" 
-           FontAttributes="Bold" />
-                        <Label Grid.Row="0" Grid.Column="1" 
-           Text="John Doe" 
-           TextColor="{Binding TextColor}" />
+                     
+                        <Grid ColumnDefinitions="Auto,2*" 
+                          RowDefinitions="Auto,Auto,Auto,Auto" 
+                          ColumnSpacing="10" 
+                          RowSpacing="10">
+                            <!-- ID Number -->
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="ID Number:" 
+                                   TextColor="{Binding TextColor}" 
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding IdNumber}" 
+                                   TextColor="{Binding TextColor}" />
 
-                        <!-- ID Number -->
-                        <Label Grid.Row="1" Grid.Column="0" 
-           Text="ID Number:" 
-           TextColor="{Binding TextColor}" 
-           FontAttributes="Bold" />
-                        <Label Grid.Row="1" Grid.Column="1" 
-           Text="123456789" 
-           TextColor="{Binding TextColor}" />
+                            <!-- Department -->
+                            <Label Grid.Row="1"
+                                   Grid.Column="0" 
+                                   Text="Department:" 
+                                   TextColor="{Binding TextColor}" 
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1" 
+                                   Text="{Binding Department}" 
+                                   TextColor="{Binding TextColor}" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="0" 
+                                   Text="Phone:" 
+                                   TextColor="{Binding TextColor}" 
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="2" 
+                                   Grid.Column="1" 
+                                   Text="{Binding Phone}" 
+                                   TextColor="{Binding TextColor}" />
 
-                        <!-- Department -->
-                        <Label Grid.Row="2" Grid.Column="0" 
-           Text="Department:" 
-           TextColor="{Binding TextColor}" 
-           FontAttributes="Bold" />
-                        <Label Grid.Row="2" Grid.Column="1" 
-           Text="Engineering" 
-           TextColor="{Binding TextColor}" />
+                            <!-- Barcode Section -->
+                         <AbsoluteLayout Grid.Row="3"
+                                         Grid.Column="0"
+                                         Grid.ColumnSpan="2" 
+                                         HorizontalOptions="Center"
+                                         IsVisible="{Binding ShowBarcode}">
+                                <StackLayout HorizontalOptions="Center">
 
-                        <!-- Barcode Section -->
-                        <AbsoluteLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
-                    HorizontalOptions="Center"
-                    IsVisible="{Binding ShowBarcode}">
-                            <StackLayout HorizontalOptions="Center">
-                                <Label Text="Barcode:" 
-                   TextColor="{Binding TextColor}" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Center" />
-                                <Image Source="dotnet_bot.png" 
-                   WidthRequest="200" 
-                   HeightRequest="50" 
-                   Aspect="AspectFit" 
-                   HorizontalOptions="Center" />
-                            </StackLayout>
-                        </AbsoluteLayout>
+                                    <Image Source="{Binding BarcodePath}" 
+                                           WidthRequest="200" 
+                                           HeightRequest="50" 
+                                           Aspect="AspectFit" 
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </AbsoluteLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                    <Grid TranslationY="-200" TranslationX="-20">
+                        
+                        <Border Stroke="{Binding BorderColor}" 
+                                 Background="{Binding BackgroundColor}"
+                                 StrokeThickness="2"
+                                 StrokeShape="RoundRectangle 10"
+                                 WidthRequest="200"
+                                 HeightRequest="100"
+                                 HorizontalOptions="Start" 
+                                 BackgroundColor="#589935"
+                                 Rotation="30" 
+                                TranslationX="-23"
+                                />
+                        <Border Stroke="{Binding BorderColor}" 
+                                 Background="{Binding BackgroundColor}"
+                                 StrokeThickness="2"
+                                 StrokeShape="RoundRectangle 10"
+                                 WidthRequest="60"
+                                 HeightRequest="55"
+                                 HorizontalOptions="Start" 
+                                 BackgroundColor="#1b4610"
+                                 TranslationX="-4"
+                                TranslationY="-35"
+                                 Rotation="25" />
                     </Grid>
-                    </StackLayout>
-                    <!-- Signature Line -->
-                    <StackLayout Orientation="Horizontal" Spacing="20" Margin="0,10,0,0"
-                                 IsVisible="{Binding ShowSignatureLine}">
-                        <Label Text="Signature:" 
-                               TextColor="{Binding TextColor}"
-                               VerticalOptions="End" 
-                               FontAttributes="Bold" />
-                        <BoxView Color="{Binding TextColor}" 
-                                 HeightRequest="1" 
-                                 WidthRequest="200" 
-                                 VerticalOptions="Center" />
-                    </StackLayout>
-
-                    <!-- Footer -->
-                    <Label Text="{Binding FooterText}" 
-                           TextColor="{Binding TextColor}"
-                           FontSize="12" 
-                           HorizontalOptions="Center" 
-                           HorizontalTextAlignment="Center" />
                 </StackLayout>
+
+             
             </Border>
         </VerticalStackLayout>
     </ScrollView>

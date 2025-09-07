@@ -4,9 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using IdentityCardGenerator.Models;
 using IdentityCardGenerator.Services;
-using System.IO;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Controls;
 
 namespace IdentityCardGenerator.ViewModels
 {

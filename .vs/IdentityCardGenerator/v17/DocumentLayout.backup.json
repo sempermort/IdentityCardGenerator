@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\services\\templateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:services\\templateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\viewmodels\\templateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:viewmodels\\templateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\models\\templatedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:models\\templatedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\views\\templateform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:views\\templateform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\helpers\\roundedhexagondrawable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:helpers\\roundedhexagondrawable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\views\\templateform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:views\\templateform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\services\\templateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:services\\templateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\views\\employeecard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:views\\employeecard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\models\\identitycard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:models\\identitycard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\helpers\\roundedhexagondrawable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:helpers\\roundedhexagondrawable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\services\\photoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:services\\photoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -41,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\interfaces\\iphotoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:interfaces\\iphotoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\models\\identitycard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|solutionrelative:models\\identitycard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6AEC741-A3D5-8C20-6152-282F08BF8015}|IdentityCardGenerator.csproj|c:\\users\\lenovo\\documents\\projects\\identity\\identitycardgenerator\\services\\barcodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,40 +78,75 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TemplateViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\ViewModels\\TemplateViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\TemplateViewModel.cs",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\ViewModels\\TemplateViewModel.cs",
+              "RelativeToolTip": "ViewModels\\TemplateViewModel.cs",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAAwNQAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T07:32:25.043Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
+              "DocumentIndex": 4,
+              "Title": "TemplateForm.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\TemplateForm.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\TemplateForm.xaml.cs",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\TemplateForm.xaml.cs",
+              "RelativeToolTip": "Views\\TemplateForm.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-26T11:01:53.228Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T07:32:18.601Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "TemplateData.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Models\\TemplateData.cs",
+              "RelativeDocumentMoniker": "Models\\TemplateData.cs",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Models\\TemplateData.cs",
+              "RelativeToolTip": "Models\\TemplateData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:17:31.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:16:21.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "TemplateForm.xaml",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\TemplateForm.xaml",
               "RelativeDocumentMoniker": "Views\\TemplateForm.xaml",
               "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\TemplateForm.xaml",
               "RelativeToolTip": "Views\\TemplateForm.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANsAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-08-26T10:48:47.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "RoundedHexagonDrawable.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Helpers\\RoundedHexagonDrawable.cs",
               "RelativeDocumentMoniker": "Helpers\\RoundedHexagonDrawable.cs",
@@ -107,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "AppShell.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\AppShell.xaml.cs",
               "RelativeDocumentMoniker": "AppShell.xaml.cs",
@@ -119,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -131,7 +182,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "TemplateService.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\TemplateService.cs",
+              "RelativeDocumentMoniker": "Services\\TemplateService.cs",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\TemplateService.cs",
+              "RelativeToolTip": "Services\\TemplateService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T07:20:32.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeeCard.xaml",
+              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\EmployeeCard.xaml",
+              "RelativeDocumentMoniker": "Views\\EmployeeCard.xaml",
+              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Views\\EmployeeCard.xaml",
+              "RelativeToolTip": "Views\\EmployeeCard.xaml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAEwDAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-04T12:24:57.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -143,31 +219,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "IdentityCard.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Models\\IdentityCard.cs",
               "RelativeDocumentMoniker": "Models\\IdentityCard.cs",
               "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Models\\IdentityCard.cs",
               "RelativeToolTip": "Models\\IdentityCard.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAIAxwDMAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAjwB8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-26T08:07:45.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TemplateService.cs",
-              "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\TemplateService.cs",
-              "RelativeDocumentMoniker": "Services\\TemplateService.cs",
-              "ToolTip": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\TemplateService.cs",
-              "RelativeToolTip": "Services\\TemplateService.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAvwA0AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T07:20:32.702Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "IPhotoService.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Interfaces\\IPhotoService.cs",
               "RelativeDocumentMoniker": "Interfaces\\IPhotoService.cs",
@@ -179,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "PhotoService.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\PhotoService.cs",
               "RelativeDocumentMoniker": "Services\\PhotoService.cs",
@@ -191,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MauiProgram.cs",
@@ -203,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ExcelService.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\ExcelService.cs",
               "RelativeDocumentMoniker": "Services\\ExcelService.cs",
@@ -215,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "BarcodeService.cs",
               "DocumentMoniker": "C:\\Users\\lenovo\\Documents\\pROJECTS\\Identity\\IdentityCardGenerator\\Services\\BarcodeService.cs",
               "RelativeDocumentMoniker": "Services\\BarcodeService.cs",

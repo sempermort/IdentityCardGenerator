@@ -21,12 +21,13 @@ namespace IdentityCardGenerator.Services
             {
                 var templateData = new TemplateData
                 {
-                    CompanyName = template.CompanyName,
-                    HeaderText = template.HeaderText,
-                    FooterText = template.FooterText,
-                    BackgroundColor = template.BackgroundColor,
-                    TextColor = template.TextColor,
-                    BorderColor = template.BorderColor,
+                    FirstName = template.FirstName,
+                    LastName = template.LastName,
+                    IdNumber = template.IdNumber, 
+                    Department = template.Department,
+                    Phone = template.Phone,
+                    PhotoPath = template.PhotoPath,
+                    BarcodePath = template.BarcodePath,
                     ShowBarcode = template.ShowBarcode,
                     ShowPhoto = template.ShowPhoto,
                     ShowSignatureLine = template.ShowSignatureLine
@@ -49,7 +50,8 @@ namespace IdentityCardGenerator.Services
                 if (!File.Exists(_templateFilePath))
                 {
                     // Return default template if no saved template exists
-                    return new TemplateViewModel();
+                    // Fix: Set required member 'PhotoPath' in the object initializer for TemplateViewModel
+                    return new TemplateViewModel { PhotoPath = string.Empty };
                 }
 
                 var json = await File.ReadAllTextAsync(_templateFilePath);
@@ -59,12 +61,13 @@ namespace IdentityCardGenerator.Services
                 {
                     var template = new TemplateViewModel
                     {
-                        CompanyName = templateData.CompanyName,
-                        HeaderText = templateData.HeaderText,
-                        FooterText = templateData.FooterText,
-                        BackgroundColor = templateData.BackgroundColor,
-                        TextColor = templateData.TextColor,
-                        BorderColor = templateData.BorderColor,
+                        FirstName = templateData.FirstName,
+                        LastName = templateData.LastName,
+                        IdNumber = templateData.IdNumber, // You may want to set this from your ViewModel if available
+                        Department = templateData.Department,
+                        Phone = templateData.Phone,
+                        PhotoPath = templateData.PhotoPath,
+                        BarcodePath = templateData.BarcodePath,
                         ShowBarcode = templateData.ShowBarcode,
                         ShowPhoto = templateData.ShowPhoto,
                         ShowSignatureLine = templateData.ShowSignatureLine
@@ -73,7 +76,8 @@ namespace IdentityCardGenerator.Services
                 }
 
                 // Return default template if deserialization fails
-                return new TemplateViewModel();
+                // Fix: Set required member 'PhotoPath' in the object initializer for TemplateViewModel
+                return new TemplateViewModel { PhotoPath = string.Empty };
             }
             catch (Exception ex)
             {

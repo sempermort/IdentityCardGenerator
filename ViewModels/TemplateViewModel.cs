@@ -1,7 +1,8 @@
+using IdentityCardGenerator.Services;
 using System.ComponentModel;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using IdentityCardGenerator.Services;
 
 namespace IdentityCardGenerator.ViewModels
 {
@@ -17,6 +18,14 @@ namespace IdentityCardGenerator.ViewModels
         private bool _showBarcode;
         private bool _showPhoto;
         private bool _showSignatureLine;
+
+        private string _firstName;
+        private string _lastName;
+        private string _department;
+        private string _phone;
+        private string _photoPath;
+        private string _barcodePath;
+        private string _idNumber;
 
         public TemplateViewModel()
         {
@@ -40,6 +49,69 @@ namespace IdentityCardGenerator.ViewModels
             _ = LoadTemplateAsync();
         }
 
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string IdNumber
+        {
+            get => _idNumber;
+            set
+            {
+                _idNumber = value;
+                OnPropertyChanged();
+            }
+        }
+        public string LastName
+        {
+            get => _lastName;
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Department
+        {
+            get => _department;
+            set
+            {
+                _department = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
+                OnPropertyChanged();
+            }
+        }
+        public required string PhotoPath
+        {
+            get => _photoPath;
+            set
+            {
+                _photoPath = value;
+                OnPropertyChanged();
+            }
+        }
+        public string BarcodePath
+        {
+            get => _barcodePath;
+            set
+            {
+                _barcodePath = value;
+                OnPropertyChanged();
+            }
+        }
         public string CompanyName
         {
             get => _companyName;
