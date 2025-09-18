@@ -1,35 +1,68 @@
 using IdentityCardGenerator.Interfaces;
-using System;
+using SkiaSharp;
 using ZXing;
 using ZXing.Common;
 
+
 namespace IdentityCardGenerator.Services
 {
-    public class BarcodeService: IBarcodeService
+   
+
+public class BarcodeService : IBarcodeService
     {
-        public byte[] GenerateBarcode(string idNumber)
+        public Task<ImageSource> GenerateBarcodeAsync(string value, BarcodeFormat format, int width, int height)
         {
-            try
+            return Task.Run(() =>
             {
-                var writer = new BarcodeWriterPixelData
+                var writer = new ZXing.SkiaSharp.BarcodeWriter
                 {
-                    Format = BarcodeFormat.CODE_128,
+                    Format = format,
                     Options = new EncodingOptions
                     {
-                        Width = 300,
-                        Height = 100,
-                        Margin = 10
-                    }
+                        Width = width,
+                        Height = height,
+                        Margin = 0,
+                        PureBarcode = true
+                    },
+                    Renderer = new ZXing.SkiaSharp.Rendering.SKBitmapRenderer()
                 };
 
-                var pixelData = writer.Write(idNumber);
-                return pixelData.Pixels;
-            }
-            catch (Exception ex)
+                using var bitmap = writer.Write(value);
+
+                using var image = SKImage.FromBitmap(bitmap);
+                using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+
+                return ImageSource.FromStream(() => data.AsStream());
+            });
+        }
+
+        public async Task<string> SaveBarcodeAsync(string value, BarcodeFormat format, int width, int height, string filePath)
+        {
+            var imageSource = await GenerateBarcodeAsync(value, format, width, height);
+
+            var writer = new ZXing.SkiaSharp.BarcodeWriter
             {
-                // Log exception or handle as appropriate for your application
-                throw new Exception($"Error generating barcode: {ex.Message}", ex);
-            }
+                Format = format,
+                Options = new EncodingOptions
+                {
+                    Width = width,
+                    Height = height,
+                    Margin = 0,
+                    PureBarcode = true
+                },
+                Renderer = new ZXing.SkiaSharp.Rendering.SKBitmapRenderer()
+            };
+
+            using var bitmap = writer.Write(value);
+            using var image = SKImage.FromBitmap(bitmap);
+            using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+
+            using var stream = File.OpenWrite(filePath);
+            data.SaveTo(stream);
+
+            return filePath;
         }
     }
+
+
 }

@@ -1,27 +1,40 @@
+using DocumentFormat.OpenXml.Bibliography;
 using System.ComponentModel;
 
 namespace IdentityCardGenerator.Models
 {
     public class IdentityCard : INotifyPropertyChanged
     {
-        private string _name;
-        private string _idNumber;
-        private string _photoPath;
-        private string _barcodePath;
+       
+        private string? _idNumber;
+        private string? _photoPath;
+        private string? _barcodePath;
+        private string? _department;
+        private string? _phone;
+        private string? _firstName;
+        private string? _lastName;
 
-        public string Name
+        public string FirstName
         {
-            get => _name;
+            get => _firstName!;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
+                _firstName = value;
+                OnPropertyChanged(nameof(FirstName));
             }
         }
-
+        public string LastName
+        {
+            get => _lastName!;
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged(nameof(LastName));
+            }
+        }
         public string IdNumber
         {
-            get => _idNumber;
+            get => _idNumber!;
             set
             {
                 _idNumber = value;
@@ -31,7 +44,7 @@ namespace IdentityCardGenerator.Models
 
         public string PhotoPath
         {
-            get => _photoPath;
+            get => _photoPath!;
             set
             {
                 _photoPath = value;
@@ -41,15 +54,34 @@ namespace IdentityCardGenerator.Models
 
         public string BarcodePath
         {
-            get => _barcodePath;
+            get => _barcodePath!;
             set
             {
                 _barcodePath = value;
                 OnPropertyChanged(nameof(BarcodePath));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public required string Department
+        {
+            get => _department!;
+            set
+            {
+                _department = value;
+                OnPropertyChanged(nameof(BarcodePath));
+            }
+        }
+        public required string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
+                OnPropertyChanged(nameof(BarcodePath));
+            }
+        }
+   
+        
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

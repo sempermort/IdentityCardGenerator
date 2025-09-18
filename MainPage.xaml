@@ -16,34 +16,34 @@
                 Margin="0,10" />
             
             <!-- Excel File Selection -->
-            <Frame Padding="10" Margin="0,5">
+            <Border Padding="10" Margin="0,5">
                 <VerticalStackLayout>
                     <Label Text="Excel File" FontAttributes="Bold" />
                     <HorizontalStackLayout Spacing="10">
                         <Entry x:Name="ExcelFilePathEntry"
                                Placeholder="Select Excel file"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="Fill"
                                IsReadOnly="True" />
                         <Button Text="Browse"
                                 Clicked="OnBrowseExcelClicked" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
             
             <!-- Photo Folder Selection -->
-            <Frame Padding="10" Margin="0,5">
+            <Border Padding="10" Margin="0,5">
                 <VerticalStackLayout>
                     <Label Text="Photo Folder" FontAttributes="Bold" />
                     <HorizontalStackLayout Spacing="10">
                         <Entry x:Name="PhotoFolderPathEntry"
                                Placeholder="Select photo folder"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="Fill"
                                IsReadOnly="True" />
                         <Button Text="Browse"
                                 Clicked="OnBrowsePhotoFolderClicked" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
             
             <!-- Status Message -->
             <Label x:Name="StatusMessageLabel"
@@ -81,12 +81,12 @@
                             HeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="10" Margin="5">
+                        <Border Padding="10" Margin="5">
                             <VerticalStackLayout>
                                 <Label Text="{Binding Name}" FontAttributes="Bold" />
                                 <Label Text="{Binding IdNumber}" />
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

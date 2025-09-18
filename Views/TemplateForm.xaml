@@ -217,11 +217,11 @@
                                          IsVisible="{Binding ShowBarcode}">
                                 <StackLayout HorizontalOptions="Center">
 
-                                    <Image Source="{Binding BarcodePath}" 
-                                           WidthRequest="200" 
-                                           HeightRequest="50" 
-                                           Aspect="AspectFit" 
-                                           HorizontalOptions="Center" />
+                                    <Image Source="{Binding BarcodeImage}" 
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           WidthRequest="300"
+                                           HeightRequest="50"/>
                                 </StackLayout>
                             </AbsoluteLayout>
                         </Grid>

@@ -137,7 +137,7 @@
                                  HorizontalOptions="Start" 
                                  BackgroundColor="#1b4610"
                                  TranslationX="-4"
-                                TranslationY="-35"
+                                 TranslationY="-35"
                                  Rotation="25" />
             </Grid>
         </StackLayout>

@@ -2,35 +2,37 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using IdentityCardGenerator.Helpers;
 using IdentityCardGenerator.Models;
 using IdentityCardGenerator.Services;
+using ZXing;
 
 namespace IdentityCardGenerator.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly ExcelService _excelService;
-        private readonly BarcodeService _barcodeService;
-        private readonly PhotoService _photoService;
-        
+
+        private readonly IdCardDocument _documentService;
         private ObservableCollection<IdentityCard> _identityCards;
-        private string _excelFilePath;
-        private string _photoFolderPath;
-        private string _statusMessage;
+        private string? _excelFilePath;
+        private string? _photoFolderPath;
+        private string? _statusMessage;
         private bool _isBusy;
+
+        public MainViewModel(IdCardDocument documentService, ExcelService excelService)
+        {
+            _excelService = excelService;
+            _identityCards = new ObservableCollection<IdentityCard>();
+            _documentService = documentService;
+            LoadDataCommand = new Command(async () => await LoadDataAsync());
+            GenerateIdCardsCommand = new Command(() => GenerateIdCards());
+            NavigateToIdCardTemplateCommand = new Command(async () => await NavigateToIdCardTemplateAsync());
+            NavigateToTemplateFormCommand = new Command(async () => await NavigateToTemplateFormAsync());
+        }
 
         public MainViewModel()
         {
-            _excelService = new ExcelService();
-            _barcodeService = new BarcodeService();
-            _photoService = new PhotoService();
-            
-            _identityCards = new ObservableCollection<IdentityCard>();
-            
-            LoadDataCommand = new Command(async () => await LoadDataAsync());
-            GenerateIdCardsCommand = new Command(async () => await GenerateIdCardsAsync());
-            NavigateToIdCardTemplateCommand = new Command(async () => await NavigateToIdCardTemplateAsync());
-            NavigateToTemplateFormCommand = new Command(async () => await NavigateToTemplateFormAsync());
         }
 
         public ObservableCollection<IdentityCard> IdentityCards
@@ -45,7 +47,7 @@ namespace IdentityCardGenerator.ViewModels
 
         public string ExcelFilePath
         {
-            get => _excelFilePath;
+            get => _excelFilePath!;
             set
             {
                 _excelFilePath = value;
@@ -55,7 +57,7 @@ namespace IdentityCardGenerator.ViewModels
 
         public string PhotoFolderPath
         {
-            get => _photoFolderPath;
+            get => _photoFolderPath!;
             set
             {
                 _photoFolderPath = value;
@@ -65,7 +67,7 @@ namespace IdentityCardGenerator.ViewModels
 
         public string StatusMessage
         {
-            get => _statusMessage;
+            get => _statusMessage!;
             set
             {
                 _statusMessage = value;
@@ -116,7 +118,9 @@ namespace IdentityCardGenerator.ViewModels
             }
         }
 
-        private async Task GenerateIdCardsAsync()
+
+
+        private void GenerateIdCards()
         {
             if (IdentityCards.Count == 0)
             {
@@ -130,37 +134,16 @@ namespace IdentityCardGenerator.ViewModels
                 StatusMessage = "Generating ID cards...";
 
                 // Create directory for generated barcodes
-                var barcodeDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GeneratedBarcodes");
-                if (!Directory.Exists(barcodeDirectory))
+                var IdCardDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GeneratedIds");
+                if (!Directory.Exists(IdCardDirectory))
                 {
-                    Directory.CreateDirectory(barcodeDirectory);
+                    Directory.CreateDirectory(IdCardDirectory);
+                    _documentService.SaveAllAsPdf(IdentityCards, IdCardDirectory);
                 }
 
                 // Process each identity card
-                for (int i = 0; i < IdentityCards.Count; i++)
-                {
-                    var card = IdentityCards[i];
-                    StatusMessage = $"Processing card {i + 1} of {IdentityCards.Count}...";
 
-                    // Generate barcode
-                    var barcodeFileName = $"{card.IdNumber}_barcode.png";
-                    var barcodePath = Path.Combine(barcodeDirectory, barcodeFileName);
-                    
-                    // Save barcode to file
-                    var barcodeBytes = _barcodeService.GenerateBarcode(card.IdNumber);
-                    await File.WriteAllBytesAsync(barcodePath, barcodeBytes);
-                    card.BarcodePath = barcodePath;
 
-                    // Find photo if photo folder path is provided
-                    if (!string.IsNullOrEmpty(PhotoFolderPath) && Directory.Exists(PhotoFolderPath))
-                    {
-                        card.PhotoPath = _photoService.GetPhotoPathForId(card.IdNumber, PhotoFolderPath);
-                    }
-
-                    // In a real application, you would generate the actual ID card here
-                    // This might involve creating a PDF or image file with the person's info,
-                    // photo, and barcode
-                }
 
                 StatusMessage = "ID cards generated successfully!";
             }
@@ -171,6 +154,15 @@ namespace IdentityCardGenerator.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+        public void SaveAllAsPdf(ObservableCollection<IdentityCard> records)
+        {
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "IdentityCards.pdf");
+
+            if (IdentityCards != null && IdentityCards.Any())
+            {
+                _documentService.SaveAllAsPdf(records,path);
             }
         }
 
@@ -186,7 +178,7 @@ namespace IdentityCardGenerator.ViewModels
             await Shell.Current.GoToAsync("//TemplateForm");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

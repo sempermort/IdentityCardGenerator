@@ -4,26 +4,33 @@ namespace IdentityCardGenerator;
 
 public partial class App : Application
 {
-	public App(IServiceProvider services)
-	{
-		InitializeComponent();
+    //public App(IServiceProvider services)
+    //{
+    //	InitializeComponent();
 
-        MainPage = new AppShell(); // <-- Make sure you're setting Shell
-                                   //// Resolve the MainPage from the service provider
-                                   //var mainPage = services.GetService<MainPage>();
-                                   //if (mainPage != null)
-                                   //{
-                                   //	MainPage = new NavigationPage(mainPage);
-                                   //}
-                                   //else
-                                   //{
-                                   //	// Fallback to default MainPage if not registered
-                                   //	MainPage = new NavigationPage(new MainPage());
-                                   //}
+    //MainPage = new AppShell();
+    // <-- Make sure you're setting Shell
+    //// Resolve the MainPage from the service provider
+    //var mainPage = services.GetService<MainPage>();
+    //if (mainPage != null)
+    //{
+    //	MainPage = new NavigationPage(mainPage);
+    //}
+    //else
+    //{
+    //	// Fallback to default MainPage if not registered
+    //	MainPage = new NavigationPage(new MainPage());
+    //}
+    // }
+
+    //protected override Window CreateWindow(IActivationState? activationState)
+    //{
+    //	return new Window(MainPage);
+    //}
+
+    public App(AppShell appShell)
+    {
+        InitializeComponent();
+        MainPage = appShell;   // ✅ AppShell is the entry point now
     }
-
-	protected override Window CreateWindow(IActivationState? activationState)
-	{
-		return new Window(MainPage);
-	}
 }
