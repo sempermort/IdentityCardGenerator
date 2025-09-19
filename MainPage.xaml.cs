@@ -10,21 +10,16 @@ namespace IdentityCardGenerator;
 
 public partial class MainPage : ContentPage
 {
-	private readonly MainViewModel _viewModel;
+	private  MainViewModel _viewModel;
 
-    //   public MainPage( MainViewModel mainViewModel)
-    //{
-    //	InitializeComponent();
-    //	_viewModel = mainViewModel;
-    //	BindingContext = _viewModel;
-    //}
-
-    public MainPage()
+      public MainPage( MainViewModel mainViewModel)
     {
-        InitializeComponent();
-        _viewModel = new MainViewModel();
-        BindingContext = _viewModel;
+    	InitializeComponent();
+    	
+    	BindingContext = _viewModel=mainViewModel;
     }
+
+    
 
     private async void OnBrowseExcelClicked(object sender, EventArgs e)
 	{
@@ -51,7 +46,7 @@ public partial class MainPage : ContentPage
         var folderPath = await PickFolderAsync();
         if (!string.IsNullOrEmpty(folderPath))
         {
-            await DisplayAlert("Folder Selected", folderPath, "OK");
+            // await DisplayAlert("Folder Selected", folderPath, "OK");
         }
 
         if (folderPath != null)

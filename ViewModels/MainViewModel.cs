@@ -4,34 +4,33 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using IdentityCardGenerator.Models;
 using IdentityCardGenerator.Services;
+using IdentityCardGenerator.Interfaces;
 
 namespace IdentityCardGenerator.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private readonly ExcelService _excelService;
+        private readonly IExcelService _excelService;
 
-        private readonly IdCardDocument _documentService;
+        private readonly IIdCardDocument _documentService;
         private ObservableCollection<IdentityCard> _identityCards;
         private string? _excelFilePath;
         private string? _photoFolderPath;
         private string? _statusMessage;
         private bool _isBusy;
+    public MainViewModel(IIdCardDocument documentService, IExcelService excelService)
+    {
+        _excelService = excelService ?? throw new ArgumentNullException(nameof(excelService));
+        _documentService = documentService ?? throw new ArgumentNullException(nameof(documentService));
+        _identityCards = new ObservableCollection<IdentityCard>();
 
-        public MainViewModel(IdCardDocument documentService, ExcelService excelService)
-        {
-            _excelService = excelService;
-            _identityCards = new ObservableCollection<IdentityCard>();
-            _documentService = documentService;
-            LoadDataCommand = new Command(async () => await LoadDataAsync());
-            GenerateIdCardsCommand = new Command(() => GenerateIdCards());
-            NavigateToIdCardTemplateCommand = new Command(async () => await NavigateToIdCardTemplateAsync());
-            NavigateToTemplateFormCommand = new Command(async () => await NavigateToTemplateFormAsync());
-        }
+        LoadDataCommand = new Command(async () => await LoadDataAsync());
+        GenerateIdCardsCommand = new Command(() => GenerateIdCards());
+        NavigateToIdCardTemplateCommand = new Command(async () => await NavigateToIdCardTemplateAsync());
+        NavigateToTemplateFormCommand = new Command(async () => await NavigateToTemplateFormAsync());
+    }
 
-        public MainViewModel()
-        {
-        }
+     
 
         public ObservableCollection<IdentityCard> IdentityCards
         {
@@ -101,7 +100,7 @@ namespace IdentityCardGenerator.ViewModels
                 IsBusy = true;
                 StatusMessage = "Loading data from Excel...";
 
-                var cards = await _excelService.ReadIdentityCardsFromExcelAsync(ExcelFilePath);
+                var cards = await _excelService.ReadIdentityCardsFromExcelAsync(ExcelFilePath,PhotoFolderPath);
                 IdentityCards = new ObservableCollection<IdentityCard>(cards);
 
                 StatusMessage = $"Loaded {cards.Count} records from Excel";

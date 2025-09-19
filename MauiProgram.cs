@@ -30,11 +30,11 @@ public static class MauiProgram
 
 
         // Register view models
-        builder.Services.AddTransient<MainViewModel>();
-		builder.Services.AddTransient<TemplateViewModel>();
+        builder.Services.AddSingleton<MainViewModel>();
+		builder.Services.AddSingleton<TemplateViewModel>();
 		
 		// Register views
-		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<IdCardTemplate>();
 		builder.Services.AddTransient<TemplateForm>();
 

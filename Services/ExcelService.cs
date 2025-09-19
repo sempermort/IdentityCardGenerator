@@ -14,7 +14,7 @@ namespace IdentityCardGenerator.Services
             _barcodeService = barcodeService;
             _photoService = photoService;
         }
-        public async Task<List<IdentityCard>> ReadIdentityCardsFromExcelAsync(string filePath)
+        public async Task<List<IdentityCard>> ReadIdentityCardsFromExcelAsync(string filePath, string folderPath)
         {
             var identityCards = new List<IdentityCard>();
 
@@ -41,9 +41,8 @@ namespace IdentityCardGenerator.Services
                         if (!string.IsNullOrWhiteSpace(identityCard.IdNumber))
                         {
                             // --- Resolve PhotoPath via PhotoService ---
-                            string photoDir = Path.Combine(Path.GetDirectoryName(filePath)!, "Photos");
-                            Directory.CreateDirectory(photoDir);
-                            identityCard.PhotoPath = _photoService.GetPhotoPathForId(row.Cell(3).GetString().Trim(), photoDir);
+                       
+                            identityCard.PhotoPath = _photoService.GetPhotoPathForId(row.Cell(3).GetString().Trim(), folderPath);
 
                             string barcodesDir = Path.Combine(Path.GetDirectoryName(filePath)!, "Barcodes");
                             Directory.CreateDirectory(barcodesDir);

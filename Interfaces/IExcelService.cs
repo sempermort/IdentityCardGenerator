@@ -9,6 +9,6 @@ namespace IdentityCardGenerator.Interfaces
 {
     public interface IExcelService
     {
-        Task<List<IdentityCard>> ReadIdentityCardsFromExcelAsync(string filePath);
+        Task<List<IdentityCard>> ReadIdentityCardsFromExcelAsync(string filePath,string folderPath);
     }
 }
