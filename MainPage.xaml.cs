@@ -1,7 +1,4 @@
-﻿using IdentityCardGenerator.Helpers;
-using IdentityCardGenerator.Services;
-using IdentityCardGenerator.ViewModels;
-using System.Windows.Input;
+﻿using IdentityCardGenerator.ViewModels;
 #if WINDOWS
 using Windows.Storage.Pickers;
 using Windows.Storage;

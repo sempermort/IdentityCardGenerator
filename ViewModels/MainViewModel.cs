@@ -2,10 +2,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using IdentityCardGenerator.Helpers;
 using IdentityCardGenerator.Models;
 using IdentityCardGenerator.Services;
-using ZXing;
 
 namespace IdentityCardGenerator.ViewModels
 {

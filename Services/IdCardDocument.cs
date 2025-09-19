@@ -6,7 +6,7 @@ using SkiaSharp;
 using System.Collections.ObjectModel;
 
 
-namespace IdentityCardGenerator.Helpers
+namespace IdentityCardGenerator.Services
 {
 
     public class IdCardDocument :IIdCardDocument
