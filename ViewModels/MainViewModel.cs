@@ -130,16 +130,14 @@ namespace IdentityCardGenerator.ViewModels
                 IsBusy = true;
                 StatusMessage = "Generating ID cards...";
 
-                // Create directory for generated barcodes
-                var IdCardDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GeneratedIds");
-                if (!Directory.Exists(IdCardDirectory))
-                {
-                    Directory.CreateDirectory(IdCardDirectory);
-                    _documentService.SaveAllAsPdf(IdentityCards, IdCardDirectory);
-                }
+                // Create directory for generated ID'S
+                var appDataDir = FileSystem.AppDataDirectory;
 
-                // Process each identity card
+                var safePath = Path.Combine(appDataDir, "GeneratedIds");
+                if (!Directory.Exists(safePath))
+                    Directory.CreateDirectory(safePath);
 
+                _documentService.SaveAllAsPdf(IdentityCards, safePath);
 
 
                 StatusMessage = "ID cards generated successfully!";

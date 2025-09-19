@@ -78,18 +78,50 @@
                    FontAttributes="Bold"
                    Margin="0,10,0,5" />
             <CollectionView x:Name="IdentityCardsCollectionView"
-                            HeightRequest="300">
+                ItemsSource="{Binding IdentityCards}"
+                HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Padding="10" Margin="5">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Name}" FontAttributes="Bold" />
-                                <Label Text="{Binding IdNumber}" />
+                        <Border Padding="10"
+                    Margin="8"
+                    Stroke="LightGray"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10">
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <!-- Photo -->
+                                <Image Source="{Binding PhotoPath}"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Center" />
+
+                                <!-- Details -->
+                                <Label Text="{Binding Name}"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           HorizontalOptions="Center" />
+
+                                <Label Text="{Binding IdNumber}"
+                           FontSize="14"
+                           TextColor="Gray"
+                           HorizontalOptions="Center" />
+
+                                <Label Text="{Binding Department}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+
+                                <Label Text="{Binding Position}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
         </VerticalStackLayout>
     </ScrollView>
 

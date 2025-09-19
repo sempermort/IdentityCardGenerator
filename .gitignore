@@ -127,3 +127,9 @@ nunit-*.xml
 .db-shm
 .bin
 .vs/
+.vs/IdentityCardGenerator/CopilotIndices/
+.vs/IdentityCardGenerator/DesignTimeBuild/
+.vs/IdentityCardGenerator/v17/
+.vs/ProjectEvaluation/identitycardgenerator.metadata.v9.bin
+.vs/ProjectEvaluation/identitycardgenerator.strings.v9.bin
+.vs/ProjectEvaluation/identitycardgenerator.projects.v9.bin
