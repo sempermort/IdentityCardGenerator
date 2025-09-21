@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IdentityCardGenerator.Views.IdCardResults"
+             Title="IdCardResults">
+
+            <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+                <Label x:Name="StatusLabel" FontSize="18" HorizontalOptions="Center"/>
+                <Button x:Name="OpenFolderButton" Text="Open Folder" Clicked="OpenFolderButton_Clicked" />
+            </StackLayout>       
+    
+</ContentPage>

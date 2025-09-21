@@ -5,6 +5,7 @@ using System.Windows.Input;
 using IdentityCardGenerator.Models;
 using IdentityCardGenerator.Services;
 using IdentityCardGenerator.Interfaces;
+using IdentityCardGenerator.Views;
 
 namespace IdentityCardGenerator.ViewModels
 {
@@ -117,40 +118,47 @@ namespace IdentityCardGenerator.ViewModels
 
 
 
-        private void GenerateIdCards()
+        private async void GenerateIdCards()
         {
             if (IdentityCards.Count == 0)
             {
-                StatusMessage = "No data loaded. Please load data first.";
+                await NavigateToResultPage("No data loaded. Please load data first.", null);
                 return;
             }
+
+            string generatedFolderPath = null;
 
             try
             {
                 IsBusy = true;
                 StatusMessage = "Generating ID cards...";
 
-                // Create directory for generated ID'S
+                // Create directory for generated IDs
                 var appDataDir = FileSystem.AppDataDirectory;
+                generatedFolderPath = Path.Combine(appDataDir, "GeneratedIds");
+                if (!Directory.Exists(generatedFolderPath))
+                    Directory.CreateDirectory(generatedFolderPath);
 
-                var safePath = Path.Combine(appDataDir, "GeneratedIds");
-                if (!Directory.Exists(safePath))
-                    Directory.CreateDirectory(safePath);
+                _documentService.SaveAllAsPdf(IdentityCards, generatedFolderPath);
 
-                _documentService.SaveAllAsPdf(IdentityCards, safePath);
-
-
-                StatusMessage = "ID cards generated successfully!";
+                await NavigateToResultPage("ID cards generated successfully!", generatedFolderPath);
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error generating ID cards: {ex.Message}";
+                await NavigateToResultPage($"Error generating ID cards: {ex.Message}", null);
             }
             finally
             {
                 IsBusy = false;
             }
         }
+
+        private async Task NavigateToResultPage(string message, string folderPath)
+        {
+            string route = $"IdCardResults?statusMessage={Uri.EscapeDataString(message)}&folderPath={Uri.EscapeDataString(folderPath ?? "")}";
+            await Shell.Current.GoToAsync(route);
+        }
+
         public void SaveAllAsPdf(ObservableCollection<IdentityCard> records)
         {
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "IdentityCards.pdf");

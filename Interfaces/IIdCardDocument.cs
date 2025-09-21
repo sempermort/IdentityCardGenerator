@@ -14,7 +14,7 @@ namespace IdentityCardGenerator.Interfaces
 
          void SaveAllAsPdf(ObservableCollection<IdentityCard> records, string filePath);
 
-         byte[] CreateHexagonPhoto(string photoPath, int size);
+         byte[] CreateHexagonPhotoFromFile(string photoPath, int size);
        
     }
 }

@@ -21,5 +21,8 @@
         Title="Template Form"
         ContentTemplate="{DataTemplate views:TemplateForm}"
         Route="TemplateForm" />
+    <ShellContent Title="ID card Results"
+        Route="IdCardResults"
+        ContentTemplate="{DataTemplate views:IdCardResults}" />
 
 </Shell>

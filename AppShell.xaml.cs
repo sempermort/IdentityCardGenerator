@@ -13,5 +13,6 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
 		Routing.RegisterRoute(nameof(IdCardTemplate), typeof(IdCardTemplate));
 		Routing.RegisterRoute(nameof(TemplateForm), typeof(TemplateForm));
-	}
+		Routing.RegisterRoute(nameof(IdCardResults), typeof(IdCardResults));
+    }
 }

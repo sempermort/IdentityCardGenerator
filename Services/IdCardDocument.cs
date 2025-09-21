@@ -1,86 +1,170 @@
-﻿using IdentityCardGenerator.Interfaces;
-using IdentityCardGenerator.Models;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
+﻿
+using PdfSharpCore.Drawing;
+using PdfSharpCore.Pdf;
 using SkiaSharp;
+using IdentityCardGenerator.Models;
 using System.Collections.ObjectModel;
-
+using System.IO;
+using IdentityCardGenerator.Interfaces;
 
 namespace IdentityCardGenerator.Services
 {
-
-    public class IdCardDocument :IIdCardDocument
+    public class IdCardDocument : IIdCardDocument
     {
+        // ID card dimensions
+        private const double CardWidth = 250;
+        private const double CardHeight = 150;
+        private const double Margin = 20;
 
-        public void SaveAllAsPdf(ObservableCollection<IdentityCard> records, string filePath)
+        private static readonly byte[] PlaceholderPng = new byte[]
         {
-            // Pre-generate hexagon images (so expensive drawing happens once)
-            var hexImages = new Dictionary<IdentityCard, byte[]>();
-            foreach (var r in records)
-                hexImages[r] = CreateHexagonPhoto(r.PhotoPath, 220);
+            0x89,0x50,0x4E,0x47,0x0D,0x0A,0x1A,0x0A,
+            0x00,0x00,0x00,0x0D,0x49,0x48,0x44,0x52,
+            0x00,0x00,0x00,0x01,0x00,0x00,0x00,0x01,
+            0x08,0x02,0x00,0x00,0x00,0x90,0x77,0x53,
+            0xDE,0x00,0x00,0x00,0x0A,0x49,0x44,0x41,
+            0x54,0x08,0xD7,0x63,0xF8,0xCF,0xC0,0x00,
+            0x00,0x03,0x01,0x01,0x00,0x18,0xDD,0x8D,
+            0xB1,0x00,0x00,0x00,0x00,0x49,0x45,0x4E,
+            0x44,0xAE,0x42,0x60,0x82
+        };
 
-            // Build document: one container.Page per record => one page per card
-            Document.Create(container =>
+        public void SaveAllAsPdf(ObservableCollection<IdentityCard> records, string folderPath)
+        {
+            if (string.IsNullOrWhiteSpace(folderPath))
+                folderPath = Path.Combine(Directory.GetCurrentDirectory(), "GeneratedIds");
+
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            string fileName = $"IDCardsSheet_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            string filePath = Path.Combine(folderPath, fileName);
+
+            var doc = new PdfDocument();
+            var page = doc.AddPage();
+            page.Width = XUnit.FromMillimeter(210); // A4 width
+            page.Height = XUnit.FromMillimeter(297); // A4 height
+
+            var gfx = XGraphics.FromPdfPage(page);
+
+            double x = Margin;
+            double y = Margin;
+            int cardsPerRow = (int)((page.Width.Point - Margin) / (CardWidth + Margin));
+            int cardCount = 0;
+
+            foreach (var record in records)
             {
-                foreach (var record in records)
+                DrawIdCard(gfx, x, y, record);
+
+                // Next position
+                cardCount++;
+                if (cardCount % cardsPerRow == 0)
                 {
-                    container.Page(page =>
+                    x = Margin;
+                    y += CardHeight + Margin;
+                    if (y + CardHeight + Margin > page.Height.Point)
                     {
-                        page.Size(PageSizes.A6);
-                        page.Margin(10);
-                        page.DefaultTextStyle(x => x.FontSize(12));
-
-                        page.Content().Padding(8).Column(col =>
-                        {
-                            // Photo (hexagon)
-                            col.Item().AlignCenter().Element(e =>
-                            {
-                                var bytes = hexImages[record];
-                                e.Width(220)
-                                 .Height(220)
-                                 .Image(new MemoryStream(bytes))
-                                 .FitArea();
-                            });
-
-                            // Name
-                            col.Item().AlignCenter().Text($"{record.FirstName} {record.LastName}")
-                                .FontSize(20).Bold().FontColor(QuestPDF.Helpers.Colors.Black);
-
-                            // Info table
-                            col.Item().PaddingTop(8).Table(table =>
-                            {
-                                table.ColumnsDefinition(c =>
-                                {
-                                    c.ConstantColumn(90);
-                                    c.RelativeColumn();
-                                });
-
-                                void AddRow(string label, string value)
-                                {
-                                    table.Cell().Text(label).Bold();
-                                    table.Cell().Text(value ?? "");
-                                }
-
-                                AddRow("ID Number:", record.IdNumber);
-                                AddRow("Department:", record.Department);
-                                AddRow("Phone:", record.Phone);
-                            });
-
-                            // Barcode / QR
-                            if(File.Exists(record.BarcodePath)) 
-                                 col.Item().AlignCenter().PaddingTop(10).Image(record.BarcodePath);
-                        });
-                    });
+                        page = doc.AddPage();
+                        page.Width = XUnit.FromMillimeter(210);
+                        page.Height = XUnit.FromMillimeter(297);
+                        gfx = XGraphics.FromPdfPage(page);
+                        x = Margin;
+                        y = Margin;
+                    }
                 }
-            })
-            .GeneratePdf(filePath);
+                else
+                {
+                    x += CardWidth + Margin;
+                }
+            }
+
+            doc.Save(filePath);
+            doc.Close();
+            Console.WriteLine($"PDF sheet generated: {filePath}");
         }
 
-        // --- SkiaSharp helper: create hexagon + clipped photo PNG ---
-        public  byte[] CreateHexagonPhoto(string photoPath, int size = 220)
+        private void DrawIdCard(XGraphics gfx, double x, double y, IdentityCard record)
         {
-            // Create SKBitmap to draw into
-            using var bitmap = new SKBitmap(size, size, SKColorType.Rgba8888, SKAlphaType.Premul);
+            // ---------------------
+            // Rotated background borders
+            DrawRotatedRectangle(gfx, x + 0, y + 0, 480, 450, -55, 80, -276, XColor.FromArgb(0x1b, 0x46, 0x10), XColors.Black, 2);
+            DrawRotatedRectangle(gfx, x + 0, y + 0, 240, 390, -63, -90, -179, XColor.FromArgb(0x58, 0x99, 0x35), XColors.Black, 2);
+
+            // Draw border around the card
+            gfx.DrawRectangle(XPens.Black, x, y, CardWidth, CardHeight);
+
+            // ---------------------
+            // Photo
+            byte[] photoBytes = File.Exists(record.PhotoPath)
+                ? CreateHexagonPhotoFromFile(record.PhotoPath, 80)
+                : CreateHexagonPhotoFromBytes(PlaceholderPng, 80);
+
+            using (var ms = new MemoryStream(photoBytes))
+            {
+                var img = XImage.FromStream(() => ms);
+                gfx.DrawImage(img, x + (CardWidth - 80) / 2, y + 10, 80, 80);
+            }
+
+            // ---------------------
+            // Name
+            gfx.DrawString($"{record.FirstName} {record.LastName}",
+                new XFont("Arial", 12, XFontStyle.Bold),
+                XBrushes.Black,
+                new XRect(x, y + 95, CardWidth, 15),
+                XStringFormats.TopCenter);
+
+            // Department + phone
+            gfx.DrawString($"Dept: {record.Department ?? ""}",
+                new XFont("Arial", 10),
+                XBrushes.Black,
+                new XRect(x + 10, y + 115, CardWidth - 20, 12),
+                XStringFormats.TopLeft);
+
+            gfx.DrawString($"Phone: {record.Phone ?? ""}",
+                new XFont("Arial", 10),
+                XBrushes.Black,
+                new XRect(x + 10, y + 130, CardWidth - 20, 12),
+                XStringFormats.TopLeft);
+
+            // Barcode
+            if (!string.IsNullOrEmpty(record.BarcodePath) && File.Exists(record.BarcodePath))
+            {
+                byte[] barcodeBytes = File.ReadAllBytes(record.BarcodePath);
+                var barcodeImg = XImage.FromStream(() => new MemoryStream(barcodeBytes));
+                gfx.DrawImage(barcodeImg, x + (CardWidth - 100) / 2, y + 145, 100, 25);
+            }
+        }
+
+        // ---------------------
+        private void DrawRotatedRectangle(XGraphics gfx, double originX, double originY, double width, double height,
+            double rotationDegrees, double translationX, double translationY,
+            XColor backgroundColor, XColor borderColor, double strokeThickness)
+        {
+            gfx.Save();
+            gfx.TranslateTransform(originX + translationX, originY + translationY);
+            gfx.RotateTransform(rotationDegrees);
+            gfx.DrawRectangle(new XSolidBrush(backgroundColor), 0, 0, width, height);
+            gfx.DrawRectangle(new XPen(borderColor, strokeThickness), 0, 0, width, height);
+            gfx.Restore();
+        }
+
+        // ---------------------
+        public byte[] CreateHexagonPhotoFromFile(string filePath, int size = 80)
+        {
+            try
+            {
+                using var photo = File.OpenRead(filePath);
+                return CreateHexagonPhotoFromBytes(ReadAllBytes(photo), size);
+            }
+            catch
+            {
+                return CreateHexagonPhotoFromBytes(PlaceholderPng, size);
+            }
+        }
+
+        private byte[] CreateHexagonPhotoFromBytes(byte[] imgBytes, int size = 80)
+        {
+            using var bitmap = new SKBitmap(size, size);
             using var canvas = new SKCanvas(bitmap);
             canvas.Clear(SKColors.Transparent);
 
@@ -91,42 +175,32 @@ namespace IdentityCardGenerator.Services
             using var path = new SKPath();
             for (int i = 0; i < 6; i++)
             {
-                // rotate so first point is top
                 double angle = Math.PI / 3 * i - Math.PI / 2;
-                float x = cx + (float)(radius * Math.Cos(angle));
-                float y = cy + (float)(radius * Math.Sin(angle));
-                if (i == 0) path.MoveTo(x, y); else path.LineTo(x, y);
+                float px = cx + (float)(radius * Math.Cos(angle));
+                float py = cy + (float)(radius * Math.Sin(angle));
+                if (i == 0) path.MoveTo(px, py); else path.LineTo(px, py);
             }
             path.Close();
 
-            // Fill background hexagon (decorative color)
             using (var fill = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = new SKColor(0x09, 0x3C, 0x07) })
                 canvas.DrawPath(path, fill);
 
-            // Draw photo clipped to the hexagon
-            if (File.Exists(photoPath))
+            using var photo = SKBitmap.Decode(imgBytes);
+            if (photo != null)
             {
-                using var photo = SKBitmap.Decode(photoPath);
-                if (photo != null)
-                {
-                    canvas.Save();
-                    canvas.ClipPath(path, SKClipOperation.Intersect, true);
+                canvas.Save();
+                canvas.ClipPath(path, SKClipOperation.Intersect, true);
 
-                    // center-crop the photo to fill the hexagon area
-                    float scale = Math.Max((float)size / photo.Width, (float)size / photo.Height);
-                    float w = photo.Width * scale;
-                    float h = photo.Height * scale;
-                    float left = (size - w) / 2f;
-                    float top = (size - h) / 2f;
-                    var dest = SKRect.Create(left, top, w, h);
-
-                    canvas.DrawBitmap(photo, dest);
-                    canvas.Restore();
-                }
+                float scale = Math.Max((float)size / photo.Width, (float)size / photo.Height);
+                float w = photo.Width * scale;
+                float h = photo.Height * scale;
+                float left = (size - w) / 2f;
+                float top = (size - h) / 2f;
+                canvas.DrawBitmap(photo, SKRect.Create(left, top, w, h));
+                canvas.Restore();
             }
 
-            // Hexagon border (white outline)
-            using (var stroke = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Stroke, Color = SKColors.White, StrokeWidth = 4 })
+            using (var stroke = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Stroke, Color = SKColors.White, StrokeWidth = 2 })
                 canvas.DrawPath(path, stroke);
 
             using var image = SKImage.FromBitmap(bitmap);
@@ -134,6 +208,11 @@ namespace IdentityCardGenerator.Services
             return data.ToArray();
         }
 
-       
+        private byte[] ReadAllBytes(Stream input)
+        {
+            using var ms = new MemoryStream();
+            input.CopyTo(ms);
+            return ms.ToArray();
+        }
     }
 }
