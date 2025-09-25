@@ -1,116 +1,117 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IdentityCardGenerator.Views.EmployeeCard">
+             x:Class="IdentityCardGenerator.Views.EmployeeCard"
+             xmlns:local="clr-namespace:IdentityCardGenerator.Views">
 
     <Border Stroke="{Binding BorderColor}" 
-                    Background="{Binding BackgroundColor}"
-                    StrokeThickness="2" 
-                    StrokeShape="RoundRectangle 10"
-                    WidthRequest="350"
-                    HeightRequest="500">
+            Background="{Binding BackgroundColor}"
+            StrokeThickness="2" 
+            StrokeShape="RoundRectangle 10"
+            WidthRequest="350"
+            HeightRequest="500">
         <StackLayout Spacing="10">
             <Grid >
                 <Grid>
                     <Border Stroke="{Binding BorderColor}" 
-                                    Background="{Binding BackgroundColor}"
-                                    StrokeThickness="2"
-                                    Padding="20" 
-                                    StrokeShape="RoundRectangle 10"
-                                    WidthRequest="480"
-                                    HeightRequest="450"
-                                    HorizontalOptions="Start" 
-                                    BackgroundColor="#1b4610" 
-                                    Rotation="-55" TranslationX="80"
-                                    TranslationY="-276"/>
+                            Background="{Binding BackgroundColor}"
+                            StrokeThickness="2"
+                            Padding="20" 
+                            StrokeShape="RoundRectangle 10"
+                            WidthRequest="480"
+                            HeightRequest="450"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="#1b4610" 
+                            Rotation="-55" TranslationX="80"
+                            TranslationY="-276"/>
                     <Border Stroke="{Binding BorderColor}" 
-                                    Background="{Binding BackgroundColor}"
-                                    StrokeThickness="2"
-                                    Padding="20" 
-                                    StrokeShape="RoundRectangle 10"
-                                    WidthRequest="240"
-                                    HeightRequest="390"
-                                    HorizontalOptions="Start" 
-                                    BackgroundColor="#589935"
-                                    Rotation="-63" 
-                                    TranslationX="-90" 
-                                    TranslationY="-179"/>
+                            Background="{Binding BackgroundColor}"
+                            StrokeThickness="2"
+                            Padding="20" 
+                            StrokeShape="RoundRectangle 10"
+                            WidthRequest="240"
+                            HeightRequest="390"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="#589935"
+                            Rotation="-63" 
+                            TranslationX="-90" 
+                            TranslationY="-179"/>
                     <!-- Content -->
 
                 </Grid>
                 <Grid>
                     <!-- Hexagon Background -->
                     <GraphicsView x:Name="graphics"
-                                          WidthRequest="220" 
-                                          HeightRequest="220"
-                                          TranslationY="-100"
-                                          Background="WhiteSmoke" />
+                                  WidthRequest="220" 
+                                  HeightRequest="220"
+                                  TranslationY="-100"
+                                  Background="WhiteSmoke" />
                     <!-- Content Over It -->
                     <Image Source="{Binding PhotoPath}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   WidthRequest="220" 
-                                   HeightRequest="220"
-                                   Aspect="AspectFit"  
-                                   TranslationY="-100"/>
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="220" 
+                           HeightRequest="220"
+                           Aspect="AspectFit"  
+                           TranslationY="-100"/>
                 </Grid>
             </Grid>
             <VerticalStackLayout 
-                        HorizontalOptions="Center"
-                        TranslationY="-230">
+                HorizontalOptions="Center"
+                TranslationY="-230">
 
-                <Label             Text="{Binding Name}" 
-                                   FontSize="30" 
-                                   FontAttributes="Bold" 
-                                   HorizontalOptions="Center" 
-                                   Margin="0,20,0,10" 
-                                   TextColor="{Binding TextColor}" />
+                <Label Text="{Binding Name}" 
+                       FontSize="30" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       Margin="0,20,0,10" 
+                       TextColor="{Binding TextColor}" />
                 <Grid ColumnDefinitions="Auto,2*" 
-                          RowDefinitions="Auto,Auto,Auto,Auto" 
-                          ColumnSpacing="10" 
-                          RowSpacing="10">
+                      RowDefinitions="Auto,Auto,Auto,Auto" 
+                      ColumnSpacing="10" 
+                      RowSpacing="10">
                     <!-- ID Number -->
                     <Label Grid.Row="0" Grid.Column="0" 
-                                   Text="ID Number:" 
-                                   TextColor="{Binding TextColor}" 
-                                   FontAttributes="Bold" />
+                           Text="ID Number:" 
+                           TextColor="{Binding TextColor}" 
+                           FontAttributes="Bold" />
                     <Label Grid.Row="0" Grid.Column="1" 
-                                   Text="{Binding IdNumber}" 
-                                   TextColor="{Binding TextColor}" />
+                           Text="{Binding IdNumber}" 
+                           TextColor="{Binding TextColor}" />
 
                     <!-- Department -->
                     <Label Grid.Row="1"
-                                   Grid.Column="0" 
-                                   Text="Department:" 
-                                   TextColor="{Binding TextColor}" 
-                                   FontAttributes="Bold" />
+                           Grid.Column="0" 
+                           Text="Department:" 
+                           TextColor="{Binding TextColor}" 
+                           FontAttributes="Bold" />
                     <Label Grid.Row="1"
-                                   Grid.Column="1" 
-                                   Text="{Binding Department}" 
-                                   TextColor="{Binding TextColor}" />
+                           Grid.Column="1" 
+                           Text="{Binding Department}" 
+                           TextColor="{Binding TextColor}" />
                     <Label Grid.Row="2"
-                                   Grid.Column="0" 
-                                   Text="Phone:" 
-                                   TextColor="{Binding TextColor}" 
-                                   FontAttributes="Bold" />
+                           Grid.Column="0" 
+                           Text="Phone:" 
+                           TextColor="{Binding TextColor}" 
+                           FontAttributes="Bold" />
                     <Label Grid.Row="2" 
-                                   Grid.Column="1" 
-                                   Text="{Binding Phone}" 
-                                   TextColor="{Binding TextColor}" />
+                           Grid.Column="1" 
+                           Text="{Binding Phone}" 
+                           TextColor="{Binding TextColor}" />
 
                     <!-- Barcode Section -->
                     <AbsoluteLayout Grid.Row="3"
-                                         Grid.Column="0"
-                                         Grid.ColumnSpan="2" 
-                                         HorizontalOptions="Center"
-                                         IsVisible="{Binding ShowBarcode}">
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2" 
+                                   HorizontalOptions="Center"
+                                   IsVisible="{Binding ShowBarcode}">
                         <StackLayout HorizontalOptions="Center">
 
                             <Image Source="barcode.png"
-                                           IsVisible="{Binding ShowBarcode}" 
-                                           HeightRequest="50" 
-                                           Aspect="AspectFit" 
-                                           HorizontalOptions="Center" />
+                                   IsVisible="{Binding ShowBarcode}" 
+                                   HeightRequest="50" 
+                                   Aspect="AspectFit" 
+                                   HorizontalOptions="Center" />
                         </StackLayout>
                     </AbsoluteLayout>
                 </Grid>
@@ -118,30 +119,28 @@
             <Grid TranslationY="-200" TranslationX="-20">
 
                 <Border Stroke="{Binding BorderColor}" 
-                                 Background="{Binding BackgroundColor}"
-                                 StrokeThickness="2"
-                                 StrokeShape="RoundRectangle 10"
-                                 WidthRequest="200"
-                                 HeightRequest="100"
-                                 HorizontalOptions="Start" 
-                                 BackgroundColor="#589935"
-                                 Rotation="30" 
-                                TranslationX="-23"
-                                />
+                        Background="{Binding BackgroundColor}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10"
+                        WidthRequest="200"
+                        HeightRequest="100"
+                        HorizontalOptions="Start" 
+                        BackgroundColor="#589935"
+                        Rotation="30" 
+                        TranslationX="-23"
+                        />
                 <Border Stroke="{Binding BorderColor}" 
-                                 Background="{Binding BackgroundColor}"
-                                 StrokeThickness="2"
-                                 StrokeShape="RoundRectangle 10"
-                                 WidthRequest="60"
-                                 HeightRequest="55"
-                                 HorizontalOptions="Start" 
-                                 BackgroundColor="#1b4610"
-                                 TranslationX="-4"
-                                 TranslationY="-35"
-                                 Rotation="25" />
+                        Background="{Binding BackgroundColor}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10"
+                        WidthRequest="60"
+                        HeightRequest="55"
+                        HorizontalOptions="Start" 
+                        BackgroundColor="#1b4610"
+                        TranslationX="-4"
+                        TranslationY="-35"
+                        Rotation="25" />
             </Grid>
         </StackLayout>
-
-
     </Border>
 </ContentView>
