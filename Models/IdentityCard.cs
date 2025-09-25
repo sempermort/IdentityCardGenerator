@@ -13,6 +13,7 @@ namespace IdentityCardGenerator.Models
         private string? _phone;
         private string? _firstName;
         private string? _lastName;
+        private string? _position;
 
         public string FirstName
         {
@@ -67,16 +68,25 @@ namespace IdentityCardGenerator.Models
             set
             {
                 _department = value;
-                OnPropertyChanged(nameof(BarcodePath));
+                OnPropertyChanged(nameof(Department));
+            }
+        }
+        public required string Position
+        {
+            get => _position!;
+            set
+            {
+                _position = value;
+                OnPropertyChanged(nameof(Position));
             }
         }
         public required string Phone
         {
-            get => _phone;
+            get => _phone!;
             set
             {
                 _phone = value;
-                OnPropertyChanged(nameof(BarcodePath));
+                OnPropertyChanged(nameof(Phone));
             }
         }
    

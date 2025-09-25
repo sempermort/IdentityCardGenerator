@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdentityCardGenerator.Interfaces;
 using IdentityCardGenerator.Services;
 using IdentityCardGenerator.ViewModels;
 using IdentityCardGenerator.Views;
-using IdentityCardGenerator.Interfaces;
+using Microsoft.Extensions.Logging;
 
 
 namespace IdentityCardGenerator;
@@ -19,7 +19,14 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+                
+                fonts.AddFont("Roboto-VariableFont_wdth,wght", "RobotoVariable");
+
+                fonts.AddFont("Roboto-Regular.ttf", "RobotoRegular");
+                fonts.AddFont("Roboto-Bold.ttf", "RobotoBold");
+                fonts.AddFont("Poppins-Regular.ttf", "Poppins");
+                fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
+            });
 
 		// Register services
 		builder.Services.AddSingleton<IExcelService, ExcelService>();

@@ -34,6 +34,7 @@ namespace IdentityCardGenerator.Services
                             LastName = row.Cell(2).GetString().Trim(),
                             IdNumber = row.Cell(3).GetString().Trim(),
                             Department = row.Cell(4).GetString().Trim(),
+                            Position= row.Cell(7).GetString().Trim(),
                             Phone = row.Cell(5).GetString().Trim()   // must be full or relative path
                         };
                         
